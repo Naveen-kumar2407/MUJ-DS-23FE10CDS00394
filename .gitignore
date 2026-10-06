@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Qdrant local database (auto-recreated on first run)
+local_qdrant_db/
+
+# Pre-computed tensor cache (large binary files)
+data/processed_tensors/*.pt
+
+# Raw video files (usually too large for version control)
+data/raw_videos/*.mp4
+data/raw_videos/*.mov
+data/raw_videos/*.avi
+data/raw_videos/*.MP4
+data/raw_videos/*.MOV
+data/raw_videos/*.AVI
+
+# Hugging Face model cache
+.cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml

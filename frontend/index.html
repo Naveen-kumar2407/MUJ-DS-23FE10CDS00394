@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Modal Search Engine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i data-lucide="video"></i>
+                <h2>Visionary</h2>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3><i data-lucide="upload-cloud"></i> Index Video</h3>
+                <div class="upload-zone" id="uploadZone">
+                    <input type="file" id="videoUpload" accept=".mp4,.mov,.avi" hidden>
+                    <i data-lucide="folder-up" class="upload-icon"></i>
+                    <p>Click to browse or drag .mp4 here</p>
+                </div>
+                <div class="progress-container hidden" id="uploadProgress">
+                    <div class="progress-bar"></div>
+                </div>
+                <p class="status-text" id="uploadStatus"></p>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="sidebar-section">
+                <h3><i data-lucide="bot"></i> Video QA Agent</h3>
+                <div class="input-group">
+                    <label>Gemini API Key</label>
+                    <input type="password" id="geminiKey" placeholder="Enter API Key">
+                    <p class="help-text">Required for Video Question Answering</p>
+                </div>
+                <label class="toggle">
+                    <input type="checkbox" id="enableRAG" disabled>
+                    <span class="slider"></span>
+                    <span class="toggle-label">Enable Video RAG</span>
+                </label>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="sidebar-section">
+                <h3><i data-lucide="database"></i> System Status</h3>
+                <div class="stats-box">
+                    <h4 id="videoCount">0</h4>
+                    <p>Videos Indexed</p>
+                </div>
+                <div class="stats-box">
+                    <h4 id="segmentCount">0</h4>
+                    <p>Total Segments</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="hero">
+                <div class="hero-bg-glow"></div>
+                <h1 class="hero-title">Semantic Video Retrieval</h1>
+                <p class="hero-subtitle">Search your video library using natural language, powered by CLIP and Cross-Attention Fusion.</p>
+                
+                <div class="search-container">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="e.g. 'a person running on the beach at sunset'">
+                    <button id="searchBtn" class="primary-btn">Search</button>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <!-- Loader -->
+                <div id="loader" class="loader-container hidden">
+                    <div class="spinner"></div>
+                    <p id="loaderText">Searching multi-modal space...</p>
+                </div>
+
+                <!-- RAG Agent Box -->
+                <div id="ragBox" class="rag-container hidden">
+                    <div class="rag-header">
+                        <i data-lucide="sparkles"></i>
+                        <span>Agent Explanation</span>
+                    </div>
+                    <div class="rag-content" id="ragContent"></div>
+                </div>
+
+                <!-- Search Results -->
+                <div id="resultsGrid" class="results-grid">
+                    <!-- Results will be injected here -->
+                </div>
+                
+                <div id="emptyState" class="empty-state">
+                    <i data-lucide="play-circle"></i>
+                    <h2>Ready to Search</h2>
+                    <p>Enter a query above to explore your indexed videos.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
